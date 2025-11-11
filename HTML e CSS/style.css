@@ -1,4 +1,18 @@
 body img{
     max-width: 200px;
     border-radius: 50%;
+    margin-left: -45px;
+    display: inline;
+    style="margin: 0;">Já voltou</p>
 }
+
+.titulo{
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+}
+
+/* .titulo img, h1{
+
+} */
+
