@@ -1,18 +1,27 @@
-body img{
+.header{
+    display: flex;
+    align-items: end;
+}
+.titulo{
+    display: flex;
+}
+
+.titulo img{
     max-width: 200px;
     border-radius: 50%;
     margin-left: -45px;
     display: inline;
-    style="margin: 0;">Já voltou</p>
 }
 
-.titulo{
+.container{
     display: flex;
-    justify-items: center;
-    justify-content: center;
+    justify-content: right;
+    justify-items: baseline;
 }
 
-/* .titulo img, h1{
 
-} */
-
+ .article img{ 
+     width: 100%;
+  height: auto;
+  display: block;
+ }
