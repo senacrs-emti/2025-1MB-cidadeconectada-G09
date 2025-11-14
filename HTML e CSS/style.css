@@ -1,3 +1,9 @@
+
+
+#map {
+  height: 180px;
+}
+
 .header{
     display: flex;
     align-items: end;
@@ -7,6 +13,8 @@
 
 .titulo{
     display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .titulo img{
@@ -56,4 +64,57 @@ nav ul {
 .logo-area img {
   max-width: 100px;        
   height: auto;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #00688B;
+    color: #ffffff;
+}
+
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+#dicas-de-seguranca {
+  background-color: #f4f4f4; 
+  padding: 60px 0; 
+  width: 100%; 
+}
+
+
+#dicas-de-seguranca .container {
+  max-width: 800px; 
+  margin: 0 auto; 
+  padding: 0 20px;
+}
+
+
+#dicas-de-seguranca h2 {
+  text-align: center;
+  font-size: 2.2em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+#dicas-de-seguranca h3 {
+  font-size: 1.6em;
+  margin-bottom: 15px;
+  color: #444;
+}
+
+#dicas-de-seguranca ul {
+  list-style-position: inside; 
+  padding-left: 0; 
+}
+
+#dicas-de-seguranca li {
+  font-size: 1em;
+  line-height: 1.7; 
+  margin-bottom: 12px; 
+  color: #555;
 }

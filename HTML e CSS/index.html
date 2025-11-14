@@ -4,76 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="crossorigin=""/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+    </style>
     <title>Já voltou?</title>
 
 </head>
-<header>
-      <div class="container">
-        <nav>
-        <ul>
-        <li>
-          <a href="#">Serviços</a>
-        </li>
-        <li>
-          <a href="#">Home</a>
-        </li>
-        <li>
-          <a href="#">Pesquisar</a>
-        </li>
-        <li>
-          <a href="#">Dicas de segurança</a>
-        </li>
-    </ul>
-  </div>
-</nav>
-<div class="titulo">
-    <img src="/Imagens/logo já voltou.jpg" alt="Logo já voltou?">
-    <h1>Já Voltou?</h1>
-</div> 
-    
-</header>
-<main>
-  <div class="articles">
-<article>
-      <img src="/Imagens/Jardim e Cachorródromo _ Prefeitura de Porto Alegre.png" alt="Jagua" style="width: 100%; height: auto; display: block;">
-</article>
-  </div>
-</main>
 <body>
-
-    <div>
-        <h2>Cadastro</h2>
-        <label for="nome">Seu nome:</label>
-    <input type="text" id="nome" name="nome" placeholder="Digite seu nome">
-    <label for="nome">Senha:</label>
-    <input type="text" id="nome" name="nome" placeholder="Digite sua senha">
-    <button type="submit">Entrar</button>
-    <button type="submit">Cadastrar</button>
+  <header>
+    <div class="container">
+      <nav>
+      <ul>
+          <li>
+            <a href="#">Serviços</a>
+          </li>
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="#">Pesquisar</a>
+          </li>
+          <li>
+            <a href="#dicas-de-seguranca">dicas-de-seguranca</a>
+          </li>
+      </ul>
     </div>
+  </nav>
+  <div class="titulo">
+      <img src="/Imagens/logo já voltou.jpg" alt="Logo já voltou?">
+      <h1>Já Voltou?</h1>
+  </div> 
+  </header>
+  <main>
+    <div id="map">
+    </div>
+      <div>
+          <h2>Cadastro</h2>
+          <label for="nome">Seu nome:</label>
+      <input type="text" id="nome" name="nome" placeholder="Digite seu nome">
+      <label for="nome">Senha:</label>
+      <input type="text" id="nome" name="nome" placeholder="Digite sua senha">
+      <button type="submit">Entrar</button>
+     
+      </div>
+      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="crossorigin=""></script>
+  </body>
+  <section id="dicas-de-seguranca">
+    <div class="container">
+        <div class="articles">
+            <article>
+                <h3>O que fazer em caso de falta de água ou luz?</h3>
+                <ul>
+                    <li>Verifique se o problema é geral, perguntando aos vizinhos ou observando outras casas.</li>
+                    <li>Comunique à companhia responsável (de água ou energia) para relatar a falta e pedir informações.</li>
+                    <li>Economize recursos: use a água ou energia restante apenas para o essencial.</li>
+                    <li>Desligue aparelhos elétricos para evitar danos quando a luz voltar.</li>
+                    <li>Use lanternas em vez de velas, evitando riscos de incêndio.</li>
+                    <li>Mantenha a geladeira e o freezer fechados para conservar os alimentos.</li>
+                    <li>Tenha sempre uma reserva de água potável e pilhas/lanternas para emergências futuras.</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+    </section>
+  </section> 
+  <script src="script.js"></script>
+</main>
+  <footer>
+      Já Voltou & Direitos Reservados
+  </footer>
 </body>
-<section id="Ajuda">
-  <div class="container">
-    <h2>Dicas de segurança</h2>
-    <div class="articles">
-      <article>
-        <img src="" alt="">
-        <header>
-          <time class="creation-date">22/07/2025 12:45:00</time>
-        </header>
-        <h3>O que fazer</h3>
-        <p>
-          Verifique se o problema é geral, perguntando aos vizinhos ou observando outras casas. 
-Comunique à companhia responsável (de água ou energia) para relatar a falta e pedir informações. 
-Economize recursos: use a água ou energia restante apenas para o essencial. 
-Desligue aparelhos elétricos para evitar danos quando a luz voltar. 
-Use lanternas em vez de velas, evitando riscos de incêndio. 
-Mantenha geladeira e freezer fechados para conservar os alimentos. 
-Tenha sempre uma reserva de água potável e pilhas/lanternas para emergências futuras. 
-        </p>
-
-<script src=""></script>
-</section> 
-<footer>
-    Já Voltou & Direitos Reservados
-</footer>
 </html>
