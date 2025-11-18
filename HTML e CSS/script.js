@@ -20,7 +20,7 @@ let marker = L.marker([-30.0243475, -51.2082336]).addTo(map);
 //     [51.51, -0.047]
 // ]).addTo(map);
 
-marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+marker.bindPopup("<b>Ponto demarcado!</b><br>Eu sou o ponto.").openPopup();
 circle.bindPopup("I am a circle.");
 polygon.bindPopup("I am a polygon.");
 
