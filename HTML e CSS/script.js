@@ -7,40 +7,40 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 let marker = L.marker([-30.0243475, -51.2082336]).addTo(map);
 
-// let circle = L.circle([51.508, -0.11], {
-//     color: 'red',
-//     fillColor: '#f03',
-//     fillOpacity: 0.5,
-//     radius: 500
-// }).addTo(map);
+let circle = L.circle([-30.0243475, -51.2082336], {
+    color: 'blue',
+    fillColor: '#1278DE',
+    fillOpacity: 0.5,
+    radius: 500
+}).addTo(map);
 
 // let polygon = L.polygon([
-//     [51.509, -0.08],
-//     [51.503, -0.06],
-//     [51.51, -0.047]
+//     [-30.0243475, -51.2082336],
+//     [-30.0243475, -51.2082336],
+//     [-30.0243475, -51.2082336]
 // ]).addTo(map);
 
-marker.bindPopup("<b>Ponto demarcado!</b><br>Eu sou o ponto.").openPopup();
-circle.bindPopup("I am a circle.");
+marker.bindPopup("<b>Sua localização!</b><br>Você está aqui!").openPopup();
+circle.bindPopup("Etá sem água nessa área.");
 polygon.bindPopup("I am a polygon.");
 
-let popup = L.popup()
-    .setLatLng([51.513, -0.09])
-    .setContent("I am a standalone popup.")
-    .openOn(map);
+// let popup = L.popup()
+//     .setLatLng([-30.0243475, -51.2082336])
+//     .setContent("I am a standalone popup.")
+//     .openOn(map);
 
-function onMapClick(e) {
-    alert("You clicked the map at " + e.latlng);
-}
-map.on('click', onMapClick);
+// function onMapClick(e) {
+//     alert("You clicked the map at " + e.latlng);
+// }
+// map.on('click', onMapClick);
 
 // let popup = L.popup();
 
-function onMapClick(e) {
-    popup
-        .setLatLng(e.latlng)
-        .setContent("You clicked the map at " + e.latlng.toString())
-        .openOn(map);
-}
+// function onMapClick(e) {
+//     popup
+//         .setLatLng(e.latlng)
+//         .setContent("You clicked the map at " + e.latlng.toString())
+//         .openOn(map);
+// }
 
-map.on('click', onMapClick);
+// map.on('click', onMapClick);

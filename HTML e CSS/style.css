@@ -1,60 +1,51 @@
-
 #map {
   height: 350px;
 }
 
-.titulo{
-    display: flex;
-    align-items: center;
+header {
+  display: flex;             
+  align-items: center;      
+  justify-content: space-between; 
+  background-color: #00688B;    
+  padding: 10px 30px;
+  color: #ffffff;                 
 }
 
-.titulo img{
-    max-width: 150px;
-    margin-left: -25px;
-    display: flex;
+.titulo {
+  display: flex;            
+  align-items: center;
+  gap: 15px;   
 }
 
-.container{
-  display: flex;
+.titulo img {
+  max-width: 150px;
+  margin-left: -45px;
 }
 
-.article img{ 
-  width: 30%;
-  height: auto;
-  display: block;
+.titulo h1 {
+  margin: 0;                      
+  font-size: 1.8em;
 }
-nav ul {
-  list-style: none;
+
+.link nav ul {
+  display: flex;           
+  gap: 25px;                
+  list-style: none;         
   margin: 0;
   padding: 0;
-  display: flex;             
 }
 
-nav ul li a {
-  text-decoration: none;
+.link nav ul li a {
+  text-decoration: none;     
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.1em;
 }
 
-.container {
-  display: flex;
-  justify-content: right;
-  justify-items: baseline;
+.link nav ul li a:hover {
+  opacity: 0.8;
 }
 
-nav ul {
-  display: flex;
-  gap: 15px; 
-}
-
-.logo-area {
-  display: flex;
-  align-items: center;    
-  gap: 10px;               
-}
-
-.logo-area img {
-  max-width: 100px;        
-  height: auto;
-}
 
 body {
     margin: 0;
@@ -97,19 +88,25 @@ body.pagina-dicas {
   padding-left: 0; 
 }
 
-.pagina-dicas li {
-  font-size: 1.05em; 
-  line-height: 1.7; 
+.pagina-dicas main li {
+  font-size: 1.05em;                                  
+  line-height: 1.7;
   margin-bottom: 15px; 
-  padding-left: 25px;  
-  position: relative;  
+  padding-left: 25px;      
+  position: relative;
+  list-style-type: none;   
 }
 
-.pagina-dicas li::before {
-  content: '✔'; 
-  color: #007BFF; 
+.pagina-dicas main li::before {
+  content: '✔';
+  color: #007BFF;
   font-weight: bold;
-  position: absolute; 
+  position: absolute;
   left: 0;
   top: 1px;
+}
+
+#bairro{
+  display: flex;
+  justify-content: space-between;
 }
