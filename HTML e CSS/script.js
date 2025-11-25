@@ -24,23 +24,23 @@ marker.bindPopup("<b>Sua localização!</b><br>Você está aqui!").openPopup();
 circle.bindPopup("Etá sem água nessa área.");
 polygon.bindPopup("I am a polygon.");
 
-// let popup = L.popup()
-//     .setLatLng([-30.0243475, -51.2082336])
-//     .setContent("I am a standalone popup.")
-//     .openOn(map);
+let popup = L.popup()
+    .setLatLng([-30.0243475, -51.2082336])
+    .setContent("I am a standalone popup.")
+    .openOn(map);
 
-// function onMapClick(e) {
-//     alert("You clicked the map at " + e.latlng);
-// }
-// map.on('click', onMapClick);
+function onMapClick(e) {
+    alert("You clicked the map at " + e.latlng);
+}
+map.on('click', onMapClick);
 
 // let popup = L.popup();
 
-// function onMapClick(e) {
-//     popup
-//         .setLatLng(e.latlng)
-//         .setContent("You clicked the map at " + e.latlng.toString())
-//         .openOn(map);
-// }
+function onMapClick(e) {
+    popup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at " + e.latlng.toString())
+        .openOn(map);
+}
 
-// map.on('click', onMapClick);
+map.on('click', onMapClick);

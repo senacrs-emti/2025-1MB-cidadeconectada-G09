@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JÁ Voltou- Seja bem-vindo</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="pagina de login">
+
+    <header>
+    <div class="titulo">
+      <img src="/Imagens/logo_já_voltou-removebg-preview.png" class="logo">
+      <h1>Já Voltou?</h1>
+    </div>
+        <div class="link">
+            <nav>
+                <ul>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="index.html">Home</a></li> 
+                    <li><a href="pesquisar.html">Pesquisar</a></li>
+                    <li><a href="Segurança.html">Dicas de segurança</a></li>
+                    <li><a href="ajuda.html">Ajuda</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="sugestoes">
+  <h2>Deixe sua sugestão</h2>
+  <form id="form-sugestao">
+    <label for="sugestao">Sua sugestão:</label><br>
+    <textarea id="sugestao" name="sugestao" rows="5 cols="40" placeholder="Escreva aqui..."></textarea><br>
+    <button type="submit">Enviar sugestão</button>
+  </form>
+  <div id="resposta"></div>
+</section>
+<script>
+  document.getElementById('form-sugestao').addEventListener('submit', function(e) {
+    e.preventDefault(); 
+    
+    const texto = document.getElementById('sugestao').value;
+    const respostaDiv = document.getElementById('resposta');
+    
+    if (texto.trim() === "") {
+      respostaDiv.textContent = "Por favor, escreva algo antes de enviar.";
+      respostaDiv.style.color = "red";
+    } else {
+      respostaDiv.textContent = "Sugestão enviada com sucesso! Obrigado 😊";
+      respostaDiv.style.color = "green";
+      
+      console.log("Sugestão do usuário:", texto);
+      
+      document.getElementById('sugestao').value = "";
+    }
+  });
+</script>
+
+</body>

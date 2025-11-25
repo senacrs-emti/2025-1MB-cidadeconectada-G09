@@ -110,3 +110,9 @@ body.pagina-dicas {
   display: flex;
   justify-content: space-between;
 }
+
+.sugestoes textarea {
+  width: 100%;
+  min-height: 200px; 
+  box-sizing: border-box; 
+}
