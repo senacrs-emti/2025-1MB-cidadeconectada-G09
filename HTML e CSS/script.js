@@ -5,6 +5,9 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+// map.locate({setView: true, maxZoom: 16});
+
+
 let marker = L.marker([-30.0243475, -51.2082336]).addTo(map);
 
 let circle = L.circle([-30.0243475, -51.2082336], {

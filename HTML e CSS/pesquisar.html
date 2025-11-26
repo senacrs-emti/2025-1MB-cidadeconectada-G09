@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pesquisar</title>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -18,41 +18,50 @@
         <div class="link">
             <nav>
                 <ul>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="index.html">Home</a></li> 
-                    <li><a href="pesquisar.html">Pesquisar</a></li>
-                    <li><a href="Segurança.html">Dicas de segurança</a></li>
-                    <li><a href="ajuda.html">Ajuda</a></li>
+                <li><a href="login.html"><i class="fas fa-user"></i> Login</a></li>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="pesquisar.html"><i class="fas fa-search"></i> Pesquisar</a></li>
+                <li><a href="Segurança.html"><i class="fas fa-shield-alt"></i> Dicas de segurança</a></li>
+                <li><a href="ajuda.html"><i class="fas fa-question-circle"></i> Ajuda</a></li>
                 </ul>
             </nav>
         </div>
     </header>
     <body>
+    <div class="search-box">
+    <i class="fas fa-search"></i>
     <input type="text" id="searchInput" placeholder="Digite para buscar..." oninput="filtrar()">
-         <script>
-    function filtrar() {
-      const input = document.getElementById('searchInput');
-      const filtro = input.value.toLowerCase();
-      const lista = document.getElementById('lista');
-      const itens = lista.getElementsByTagName('li');
+</div>
+<ul id="lista" class="lista-bairros">
+    <li>Santa Tereza</li>
+    <li>Centro Historiuco</li>
+    <li>Bela Vista</li>
+    <li>Sarandi</li>
+    <li>Floresta</li>
+    <li>Tristexa</li>
+    <li>Cruzeiro</li>
+</ul>
 
-      for (let i = 0; i < itens.length; i++) {
-        const li = itens[i];
-        const texto = li.textContent.toLowerCase();
 
-        if (texto.includes(filtro)) {
-          li.style.display = "";     // mostra o item
-        } else {
-          li.style.display = "none"; // esconde o item
-        }
-      }
-    }
-  </script>
- 
+<script>
+function filtrar() {
+  const input = document.getElementById('searchInput');
+  const filtro = input.value.toLowerCase();
+  const lista = document.getElementById('lista');
 
-    <footer>
-        Já Voltou & Direitos Reservados
-    </footer>
+  if (!lista) return;
+
+  const itens = lista.getElementsByTagName('li');
+
+  for (let i = 0; i < itens.length; i++) {
+    const li = itens[i];
+    const texto = li.textContent.toLowerCase();
+
+    li.style.display = texto.includes(filtro) ? "" : "none";
+  }
+}
+</script>
+
 
 </body>
 </html>

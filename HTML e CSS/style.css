@@ -67,7 +67,7 @@ body.pagina-dicas {
   max-width: 800px;        
   margin: 40px auto;      
   padding: 30px 40px;      
-  background-color: #ffffff; 
+  background-color: #00688B; 
   border-radius: 8px;     
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); 
 }
@@ -116,3 +116,70 @@ body.pagina-dicas {
   min-height: 200px; 
   box-sizing: border-box; 
 }
+
+body.pagina-login {
+  background-color: #00688B;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  color: #333;
+}
+
+body.pagina-login {
+  background-color: #00688B;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center; /* centraliza horizontalmente */
+  align-items: center;     /* centraliza verticalmente (opcional) */
+  font-family: sans-serif;
+  color: #333;
+}
+
+.login-box {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 90%;         /* largura relativa — ocupa 90% da tela */
+  max-width: 400px;   /* largura máxima fixa (não fica enorme em telas grandes) */
+  margin: 0 auto;     /* margem automática — igual à esquerda e direita */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.login-box label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #00688B;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-box button:hover {
+  background-color: #005070;
+}
+
+.login-box .message {
+  margin-top: 15px;
+  font-size: 0.9em;
+  color: red;
+}
+

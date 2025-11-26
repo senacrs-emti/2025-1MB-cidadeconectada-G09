@@ -1,5 +1,5 @@
 # 2025-1MB-cidadeconectada-G09
-🚰 Já coltou - Sistema de gerenciamento 
+🚰 Já voltou - Sistema de gerenciamento 
 Biblioteca Digital ETEP — Sistema que informa ao usuário que horas irá voltar a água e a luz
 Banner do Projeto
 
