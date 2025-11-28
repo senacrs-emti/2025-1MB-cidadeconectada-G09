@@ -38,14 +38,127 @@
     </div>
     </main>
 
-    <div id="bairro">
-    <div class="bairro santa"><h2>Santa Tereza</h2>
-    <div class="bairro moinho"><h2>Moinhos de Vento</h2>
-    <div class="bairro sarandi"><h2>Sarandi</h2>
-    <div class="bairro jardim"><h2>Jardim Europa</h2>
-    <div class="bairro cristal"><h2>Cristal</h2>
+     <div class="search-wrapper">
+    <input type="text" id="search-input" placeholder="Pesquisar..." autocomplete="off" />
+    <button id="search-button"><i class="fas fa-search"></i></button>
   </div>
+<<<<<<< HEAD
 </div>
+=======
+
+  <ul id="suggestions"></ul>
+
+  <script>
+    // dados de exemplo — você pode substituir por seus dados reais
+    const data = [
+      "Aberta dos Morros",
+      "Agronomia",
+      "Anchieta",
+      "Arquepelogo",
+      "Auxiliadora",
+      "Azenha",
+      "Bela Vista",
+      "Belém Novo",
+      "Belém Velho",
+      "Boa vista",
+      "Bom Jesus",
+      "Bom fim",
+      "Camaquã",
+      "Campo Novo",
+      "Cascata",
+      "Cavalhada",
+      "Centro",
+      "Chácara das Pedras",
+      "Cidade Baixa",
+      "Cristal",
+      "Farrapos",
+      "Floresta",
+      "Guarujá",
+      "Higienópolis",
+      "Hipica",
+      "Humaita",
+      "Independência",
+      "Ipanema",
+      "Jardim Botânico",
+      "Jardim Leopoldina",
+      "Jardim Isabel",
+      "Lami",
+      "Medianeira",
+      "Menino Deus",
+      "Moinhos de Vento",
+      "Parque Santa Fé",
+      "Partenon",
+      "Passo D Areia",
+      "Petropolis",
+      "Ponto Grossa",
+      "Praia de Belas",
+      "Restinga",
+      "Rio Branco",
+      "Rubem Berta",
+      "Santa Tereza",
+      "Santana",
+      "São Caetano",
+      "Sarandi",
+      "Serraria",
+      "Sétimo Céu",
+      "Teresópolis",
+      "Três Figueiras",
+      "Tristeza",
+      "Vila Assunção",
+      "Vila Ipiranga",
+      "Vila Jardim",
+      "Vila Nova",
+      
+
+
+    
+
+
+    ];
+
+    const input = document.getElementById('search-input');
+    const suggestions = document.getElementById('suggestions');
+
+    input.addEventListener('input', () => {
+      const value = input.value.trim().toLowerCase();
+
+      if (!value) {
+        suggestions.style.display = 'none';
+        suggestions.innerHTML = '';
+        return;
+      }
+
+      const filtered = data.filter(item =>
+        item.toLowerCase().includes(value)
+      );
+
+      if (filtered.length === 0) {
+        suggestions.style.display = 'none';
+        suggestions.innerHTML = '';
+        return;
+      }
+
+      suggestions.innerHTML = filtered
+        .map(item => `<li>${item}</li>`)
+        .join('');
+      suggestions.style.display = 'block';
+
+      suggestions.querySelectorAll('li').forEach(li => {
+        li.addEventListener('click', () => {
+          input.value = li.textContent;
+          suggestions.style.display = 'none';
+        });
+      });
+    });
+
+    // se clicar fora do input ou da lista, esconder sugestões
+    document.addEventListener('click', (e) => {
+      if (!input.contains(e.target) && !suggestions.contains(e.target)) {
+        suggestions.style.display = 'none';
+      }
+    });
+  </script>
+>>>>>>> 1888da23120a4072ec711f396a6c490c9ca08a12
 
       <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="crossorigin=""></script>
   </body>
