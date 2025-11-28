@@ -60,7 +60,7 @@ html {
 
 body.pagina-dicas {
   background-color: #f4f4f4;
-  color: #333; 
+  color: #ffffff; 
 }
 
 .pagina-dicas main .container {
@@ -183,11 +183,19 @@ body.pagina-login {
   color: red;
 }
   
+    /* contêiner que ocupa toda a tela e centraliza o conteúdo */
+    .center-wrapper {
+      display: flex;
+      justify-content: center; /* centraliza horizontalmente */
+      align-items: center;     /* centraliza verticalmente */
+      height: 100vh;           /* altura: 100% da janela */
+      background-color: #f4f4f4;
+      color: #333;
+    }
 
     .search-wrapper {
       display: flex;
       align-items: center;
-      margin-bottom: 10px;
     }
 
     #search-input {
@@ -214,7 +222,7 @@ body.pagina-login {
     }
 
     #suggestions {
-      margin-top: 0;
+      margin-top: 8px;
       width: 250px;
       border: 1px solid #ccc;
       border-radius: 4px;
@@ -223,7 +231,7 @@ body.pagina-login {
       background: white;
       list-style: none;
       padding: 0;
-      display: none; /* comece escondida */
+      display: none;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
@@ -235,4 +243,5 @@ body.pagina-login {
     #suggestions li:hover {
       background-color: #f0f0f0;
     }
-  
+
+    
