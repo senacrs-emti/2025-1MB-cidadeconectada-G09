@@ -112,7 +112,7 @@ body.pagina-dicas {
 }
 
 .sugestoes textarea {
-  width: 100%;
+  width: 50%;
   min-height: 200px; 
   box-sizing: border-box; 
 }
@@ -182,4 +182,57 @@ body.pagina-login {
   font-size: 0.9em;
   color: red;
 }
+  
 
+    .search-wrapper {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    #search-input {
+      padding: 10px;
+      font-size: 1em;
+      width: 250px;
+      border: 2px solid #ccc;
+      border-radius: 4px 0 0 4px;
+      outline: none;
+    }
+
+    #search-button {
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-left: none;
+      background-color: #00688B;
+      color: white;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+    }
+
+    #search-button:hover {
+      background-color: #005070;
+    }
+
+    #suggestions {
+      margin-top: 0;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      max-height: 200px;
+      overflow-y: auto;
+      background: white;
+      list-style: none;
+      padding: 0;
+      display: none; /* comece escondida */
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    #suggestions li {
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    #suggestions li:hover {
+      background-color: #f0f0f0;
+    }
+  

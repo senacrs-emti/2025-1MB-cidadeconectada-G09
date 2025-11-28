@@ -28,39 +28,111 @@
         </div>
     </header>
     <body>
-    <div class="search-box">
-    <i class="fas fa-search"></i>
-    <input type="text" id="searchInput" placeholder="Digite para buscar..." oninput="filtrar()">
-</div>
-<ul id="lista" class="lista-bairros">
-    <li>Santa Tereza</li>
-    <li>Centro Historiuco</li>
-    <li>Bela Vista</li>
-    <li>Sarandi</li>
-    <li>Floresta</li>
-    <li>Tristexa</li>
-    <li>Cruzeiro</li>
-</ul>
+       <div class="search-wrapper">
+    <input type="text" id="search-input" placeholder="Pesquisar..." autocomplete="off" />
+    <button id="search-button"><i class="fas fa-search"></i></button>
+  </div>
+
+  <ul id="suggestions"></ul>
+
+  <script>
+    // dados de exemplo — você pode substituir por seus dados reais
+    const data = [
+      "Aberta dos Morros",
+      "Agronomia",
+      "Anchieta",
+      "Arquepelogo",
+      "Auxiliadora",
+      "Azenha",
+      "Bela Vista",
+      "Belém Novo",
+      "Belém Velho",
+      "Boa vista",
+      "Bom Jesus",
+      "Bom fim",
+      "Camaquã",
+      "Campo Novo",
+      "Cascata",
+      "Cavalhada",
+      "Centro",
+      "Chácara das Pedras",
+      "Cidade Baixa",
+      "Cristal",
+      "Farrapos",
+      "Floresta",
+      "Guarujá",
+      "Higienópolis",
+      "Hipica",
+      "Humaita",
+      "Independência",
+      "Ipanema",
+      "Jardim Botânico",
+      "Jardim Leopoldina",
+      "Jardim Isabel",
+      "Lami",
+      "Medianeira",
+      "Menino Deus",
+      "Moinhos de Vento",
+      "Parque Santa Fé",
+      "Partenon",
+      "Passo D' Areia",
+      "Petropolis",
+      "Ponto Grossa",
+      "Praia de Belas",
+      "Restinga",
+      "Rio Branco",
+
+    
 
 
-<script>
-function filtrar() {
-  const input = document.getElementById('searchInput');
-  const filtro = input.value.toLowerCase();
-  const lista = document.getElementById('lista');
+    ];
 
-  if (!lista) return;
+    const input = document.getElementById('search-input');
+    const suggestions = document.getElementById('suggestions');
 
-  const itens = lista.getElementsByTagName('li');
+    input.addEventListener('input', () => {
+      const value = input.value.trim().toLowerCase();
 
-  for (let i = 0; i < itens.length; i++) {
-    const li = itens[i];
-    const texto = li.textContent.toLowerCase();
+      if (!value) {
+        suggestions.style.display = 'none';
+        suggestions.innerHTML = '';
+        return;
+      }
 
-    li.style.display = texto.includes(filtro) ? "" : "none";
-  }
-}
-</script>
+      const filtered = data.filter(item =>
+        item.toLowerCase().includes(value)
+      );
+
+      if (filtered.length === 0) {
+        suggestions.style.display = 'none';
+        suggestions.innerHTML = '';
+        return;
+      }
+
+      suggestions.innerHTML = filtered
+        .map(item => `<li>${item}</li>`)
+        .join('');
+      suggestions.style.display = 'block';
+
+      suggestions.querySelectorAll('li').forEach(li => {
+        li.addEventListener('click', () => {
+          input.value = li.textContent;
+          suggestions.style.display = 'none';
+        });
+      });
+    });
+
+    // se clicar fora do input ou da lista, esconder sugestões
+    document.addEventListener('click', (e) => {
+      if (!input.contains(e.target) && !suggestions.contains(e.target)) {
+        suggestions.style.display = 'none';
+      }
+    });
+  </script>
+
+
+
+    
 
 
 </body>
