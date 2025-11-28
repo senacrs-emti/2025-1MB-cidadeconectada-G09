@@ -2,6 +2,11 @@
   height: 350px;
 }
 
+#bairro{
+  display: contents;
+  justify-content: space-between;
+}
+
 header {
   display: flex;             
   align-items: center;      
