@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Já Voltou?</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f1f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 350px;
+            margin: 80px auto;
+            padding: 25px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #0b6b78;
+        }
+
+        p.info {
+            background-color: #dff4ff;
+            padding: 10px;
+            border-left: 4px solid #0b6b78;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            margin-bottom: 15px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        button {
+            width: 100%;
+            background-color: #0b6b78;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 17px;
+        }
+
+        button:hover {
+            background-color: #094f58;
+        }
+
+        .voltar {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .voltar a {
+            color: #0b6b78;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .voltar a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Criar Conta</h2>
+
+        <p class="info">
+            Para acessar o sistema, crie seu usuário e senha.<br>
+            Guarde essas informações — você usará elas para entrar na próxima vez.
+        </p>
+
+        <label for="usuario">Usuário</label>
+        <input type="text" id="usuario" placeholder="Crie seu usuário">
+
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" placeholder="Crie sua senha">
+
+        <button onclick="criarConta()">Entrar</button>
+
+        <div class="voltar">
+            <p>Já tem conta? <a href="login.html">Voltar ao Login</a></p>
+        </div>
+    </div>
+
+    <script>
+        function criarConta() {
+            let usuario = document.getElementById("usuario").value;
+            let senha = document.getElementById("senha").value;
+
+            if (!usuario || !senha) {
+                alert("Preencha usuário e senha!");
+                return;
+            }
+
+            // Salva temporariamente no navegador
+            localStorage.setItem("usuario", usuario);
+            localStorage.setItem("senha", senha);
+
+            alert("Conta criada com sucesso!\nUsuário: " + usuario + "\nSenha: " + senha);
+
+            // Volta ao login
+            window.location.href = "login.html";
+        }
+    </script>
+
+</body>
+</html>

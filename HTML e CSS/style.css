@@ -262,3 +262,87 @@ body.pagina-login {
 #suggestions li {
   color: black;
 }
+
+.criar-conta {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.criar-conta a {
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.criar-conta a:hover {
+    text-decoration: underline;
+}
+
+.criar-conta a {
+    color: #2266ee;
+}
+
+.container {
+    width: 350px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Botão "Entrar" */
+.btn-entrar {
+    background: #4a90e2;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.btn-entrar:hover {
+    background: #357ac9;
+}
+
+/* Centralizar link de criar conta */
+.criar-conta {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.criar-conta a {
+    color: #4a00aa;
+    text-decoration: none;
+}
+
+.criar-conta a:hover {
+    text-decoration: underline;
+}
+.status-card {
+    width: 260px;
+    background: white;
+    padding: 15px;
+    margin: 15px auto;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #0003;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+
