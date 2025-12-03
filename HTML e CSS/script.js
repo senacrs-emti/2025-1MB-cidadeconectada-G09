@@ -16,12 +16,14 @@ let circle = L.circle([-30.0243475, -51.2082336], {
     fillOpacity: 0.5,
     radius: 500
 }).addTo(map);
- 
+// =======================================
 // let polygon = L.polygon([
 //    [-30.0243475, -51.2082336],
 //    [-30.0243475, -51.2082336],
 //      [-30.0243475, -51.2082336]
 // ]).addTo(map);
+
+// ========================================
  
 marker.bindPopup("<b>Sua localização!</b><br>Você está aqui!").openPopup();
 circle.bindPopup("Etá sem água nessa área.");
