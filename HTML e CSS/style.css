@@ -331,18 +331,28 @@ body.pagina-login {
 .criar-conta a:hover {
     text-decoration: underline;
 }
-.status-card {
-    width: 260px;
-    background: white;
-    padding: 15px;
-    margin: 15px auto;
-    border-radius: 12px;
-    box-shadow: 0 0 10px #0003;
-    text-align: center;
-}
 
-.hidden {
+#status-card {
+    width: 90%;
+    max-width: 420px;
+    margin: 20px auto;
+    padding: 18px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    font-family: Arial, sans-serif;
     display: none;
 }
 
+#status-card h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
 
+#status-card p {
+    margin-top: 6px;
+    font-size: 16px;
+    color: #444;
+}

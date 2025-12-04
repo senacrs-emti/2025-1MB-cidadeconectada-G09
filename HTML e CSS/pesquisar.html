@@ -10,33 +10,32 @@
 
 <body class="pagina-dicas">
 
-    <header>
-    <div class="titulo">
+<header>
+  <div class="titulo">
       <img src="/Imagens/logo_já_voltou-removebg-preview.png" class="logo">
       <h1>Já Voltou?</h1>
-    </div>
-        <div class="link">
-            <nav>
-                <ul>
-                <li><a href="login.html"><i class="fas fa-user"></i> Login</a></li>
-                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="pesquisar.html"><i class="fas fa-search"></i> Pesquisar</a></li>
-                <li><a href="Segurança.html"><i class="fas fa-shield-alt"></i> Dicas de segurança</a></li>
-                <li><a href="ajuda.html"><i class="fas fa-question-circle"></i> Ajuda</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <body>
-       <div class="search-wrapper">
+  </div>
+  <div class="link">
+    <nav>
+      <ul>
+        <li><a href="login.html"><i class="fas fa-user"></i> Login</a></li>
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="pesquisar.html"><i class="fas fa-search"></i> Pesquisar</a></li>
+        <li><a href="Segurança.html"><i class="fas fa-shield-alt"></i> Dicas de segurança</a></li>
+        <li><a href="ajuda.html"><i class="fas fa-question-circle"></i> Ajuda</a></li>
+      </ul>
+    </nav>
+  </div>
+  </header>
+  <body>
+  <div class="search-wrapper">
     <input type="text" id="search-input" placeholder="Pesquisar..." autocomplete="off" />
     <button id="search-button"><i class="fas fa-search"></i></button>
   </div>
-
-  <ul id="suggestions"></ul>
+    <ul id="suggestions"></ul>
 
   <script>
-    // dados de exemplo — você pode substituir por seus dados reais
+   
     const data = [
       "Aberta dos Morros",
       "Agronomia",
@@ -138,7 +137,7 @@
       });
     });
 
-    // se clicar fora do input ou da lista, esconder sugestões
+    
     document.addEventListener('click', (e) => {
       if (!input.contains(e.target) && !suggestions.contains(e.target)) {
         suggestions.style.display = 'none';

@@ -10,63 +10,52 @@
 
 <body class="pagina de login">
 
-    <header>
-        <div class="titulo">
-            <img src="/Imagens/logo_já_voltou-removebg-preview.png" class="logo">
-            <h1>Já Voltou?</h1>
-        </div>
+<header>
+  <div class="titulo">
+    <img src="/Imagens/logo_já_voltou-removebg-preview.png" class="logo">
+    <h1>Já Voltou?</h1>
+  </div>
 
-        <div class="link">
-            <nav>
-                <ul>
-                    <li><a href="login.html"><i class="fas fa-user"></i> Login</a></li>
-                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="pesquisar.html"><i class="fas fa-search"></i> Pesquisar</a></li>
-                    <li><a href="Segurança.html"><i class="fas fa-shield-alt"></i> Dicas de segurança</a></li>
-                    <li><a href="ajuda.html"><i class="fas fa-question-circle"></i> Ajuda</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <div class="link">
+      <nav>
+        <ul>
+          <li><a href="login.html"><i class="fas fa-user"></i> Login</a></li>
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="pesquisar.html"><i class="fas fa-search"></i> Pesquisar</a></li>
+          <li><a href="Segurança.html"><i class="fas fa-shield-alt"></i> Dicas de segurança</a></li>
+          <li><a href="ajuda.html"><i class="fas fa-question-circle"></i> Ajuda</a></li>
+        </ul>
+      </nav>
+  </div>
+  </header>
   <div class="login-box">
     <label for="username">Usuário:</label>
     <input type="text" id="username" placeholder="Digite seu usuário">
-
     <label for="password">Senha:</label>
     <input type="password" id="password" placeholder="Digite sua senha">
-
-    <!-- botão com type="button" para evitar comportamento de formulário default -->
     <button type="button" id="btnEntrar">Entrar</button>
-
     <p>Ainda não tem conta? <a href="cadastro.html">Criar conta</a></p>
-
-    <div class="message" id="message"></div>
+  <div class="message" id="message"></div>
   </div>
 
   <script>
     document.getElementById('btnEntrar').addEventListener('click', function() {
-      const username = document.getElementById('username').value.trim();
-      const password = document.getElementById('password').value.trim();
-      const messageEl = document.getElementById('message');
-      messageEl.textContent = '';
-      messageEl.style.color = 'red';
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const messageEl = document.getElementById('message');
+    messageEl.textContent = '';
+    messageEl.style.color = 'red';
 
-      if (!username || !password) {
-        messageEl.textContent = 'Por favor, preencha usuário e senha.';
-        return;
-      }
+    if (!username || !password) {
+    messageEl.textContent = 'Por favor, preencha usuário e senha.';
+    return;
+    }
 
-      if (username === 'admin' && password === '1234') {
-        // Redirecionamento acerto
-        // Opção 1: href
-        window.location.href = 'home.html';
-
-        // Opção 2 (alternativa): assign()
-        // window.location.assign('home.html');
-
-        // Opcional: usar replace() se não quiser guardar a página atual no histórico
-        // window.location.replace('home.html');
-      } else {
+    if (username === 'admin' && password === '1234') {
+    window.location.href = 'home.html';
+    }
+    
+    else {
         messageEl.textContent = 'Usuário ou senha incorretos.';
       }
     });

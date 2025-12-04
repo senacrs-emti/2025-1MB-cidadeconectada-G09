@@ -50,6 +50,14 @@ function onMapClick(e) {
  
 map.on('click', onMapClick);
 
+const statusBairros = {
+    "Aberta dos Morros": "Energia normal.",
+    "Agronomia": "Sem água no momento.",
+    "Auxiliadora": "Tudo normal.",
+    "Azenha": "Sem energia em algumas ruas.",
+    // adicione seus bairros aqui...
+};
+
 document.addEventListener("DOMContentLoaded", () => {
 
   // Elementos do HTML
@@ -82,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { nome: "Cidade Baixa", lat: -30.039281073097335, lng: -51.22401792180963 },
     { nome: "Cristal", lat: -30.0903028054091, lng:-51.239146261313635 },
     { nome: "Farrapos", lat: -29.98427107895461, lng: -51.19702341168414},
+    {nome:"Farroupilha", lat: -30.036681461320956, lng:-51.21554030175293},
     { nome: "Floresta", lat: -30.019589101106508, lng: -51.21133333261758 },
     { nome: "Guarujá", lat: -30.157338522688367, lng: -51.21735694644776},
     { nome: "Higienópolis", lat: -30.01528061315723,  lng: -51.18454424363409 },
@@ -91,8 +100,10 @@ document.addEventListener("DOMContentLoaded", () => {
     { nome: "Ipanema", lat: -30.134951551207738, lng: -51.22331294976427 },
     { nome: "Jardim Botânico", lat: -30.051848044293845, lng: -51.18255263119411 },
     { nome: "Jardim Leopoldina", lat: -30.019941853462853,  lng: -51.11500099950342 },
-    { nome: "Jardim Isabel", lat: -30.126356757426173, lng: -51.23565242333266 },
+     { nome: "Jardim Leopoldina", lat: -30.019941853462853,  lng: -51.11500099950342 },
+    { nome: "Jardim Lindoia", lat: -30.007591120222326,  lng: -51.15167876616331 },
     { nome: "Lami", lat: -30.23062200191629, lng: -51.088071431022236},
+    { nome: "Lomba do Pinheiro", lat: -30.11666873264922, lng: -51.12576154936868},
     { nome: "Medianeira", lat: -30.064928420587247, lng: -51.21123848859803 },
     { nome: "Menino Deus", lat: -30.053180379042534, lng: -51.224961237635995 },
     { nome: "Moinhos de Vento", lat: -30.023792961136955, lng: -51.203306558458955 },
@@ -113,17 +124,17 @@ document.addEventListener("DOMContentLoaded", () => {
     { nome: "Sétimo Céu", lat: -30.120097678246186, lng: -51.24143721285469 },
     { nome: "Teresópolis", lat:-30.09097025971738, lng: -51.19978369508952 },
     { nome: "Três Figueiras", lat: -30.032719666189113, lng: -51.17342049310451},
-    { nome: "Tristeza", lat: -30.1400, lng: -51.2500 },
-    { nome: "Vila Assunção", lat: -30.1500, lng: -51.2500 },
-    { nome: "Vila Ipiranga", lat: -30.0200, lng: -51.1900 },
-    { nome: "Vila Jardim", lat: -30.0300, lng: -51.2100 },
-    { nome: "Vila Nova", lat: -30.1500, lng: -51.2500 },
+    { nome: "Tristeza", lat: -30.11004123915776, lng:  -51.25216789309641 },
+    { nome: "Vila Assunção", lat: -30.100721564728243, lng: -51.25785079800097 },
+    { nome: "Vila Ipiranga", lat: -30.021706926126768, lng: -51.15019903059785},
+    { nome: "Vila Jardim", lat: -30.03546714265876, lng:  -51.153076297717355 },
+    { nome: "Vila Nova", lat: -30.113309167096524, lng: -51.20261831429308 },
   ];
 
-  // Array só de nomes para sugestões
+  
   const nomesBairros = bairros.map(b => b.nome);
 
-  // -------- FUNÇÃO DE SUGESTÕES --------
+  
   function showSuggestions() {
     const value = input.value.trim().toLowerCase();
 
@@ -146,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
     suggestions.innerHTML = filtered.map(item => `<li>${item}</li>`).join("");
     suggestions.style.display = "block";
 
-    // Escolher um item
+   
     suggestions.querySelectorAll("li").forEach(li => {
       li.addEventListener("click", () => {
         input.value = li.textContent;
@@ -155,10 +166,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // DIGITAR
+ 
   input.addEventListener("input", showSuggestions);
 
-  // CLIQUE NA LUPA → move círculo e centraliza mapa
+  
   searchButton.addEventListener("click", () => {
     const bairroDigitado = input.value.trim();
     const bairro = bairros.find(b => b.nome.toLowerCase() === bairroDigitado.toLowerCase());
@@ -176,10 +187,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Impede blur ao clicar na lupa
+  
   searchButton.addEventListener("mousedown", (e) => e.preventDefault());
 
-  // ENTER
+ 
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -187,7 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // FECHAR AO CLICAR FORA
+ 
   document.addEventListener("click", (e) => {
     if (
       e.target !== input &&
