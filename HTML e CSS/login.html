@@ -28,19 +28,53 @@
             </nav>
         </div>
     </header>
-
-   <div class="login-box">
-
+  <div class="login-box">
     <label for="username">Usuário:</label>
     <input type="text" id="username" placeholder="Digite seu usuário">
 
     <label for="password">Senha:</label>
     <input type="password" id="password" placeholder="Digite sua senha">
 
-    <button class="btn-entrar">Entrar</button>
-   
-    <p>Ainda não tem conta? <a href="cadastro.html">Ainda não tem conta? Criar conta</a></p>
+    <!-- botão com type="button" para evitar comportamento de formulário default -->
+    <button type="button" id="btnEntrar">Entrar</button>
+
+    <p>Ainda não tem conta? <a href="cadastro.html">Criar conta</a></p>
 
     <div class="message" id="message"></div>
+  </div>
 
-</div>
+  <script>
+    document.getElementById('btnEntrar').addEventListener('click', function() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const messageEl = document.getElementById('message');
+      messageEl.textContent = '';
+      messageEl.style.color = 'red';
+
+      if (!username || !password) {
+        messageEl.textContent = 'Por favor, preencha usuário e senha.';
+        return;
+      }
+
+      if (username === 'admin' && password === '1234') {
+        // Redirecionamento acerto
+        // Opção 1: href
+        window.location.href = 'home.html';
+
+        // Opção 2 (alternativa): assign()
+        // window.location.assign('home.html');
+
+        // Opcional: usar replace() se não quiser guardar a página atual no histórico
+        // window.location.replace('home.html');
+      } else {
+        messageEl.textContent = 'Usuário ou senha incorretos.';
+      }
+    });
+  </script>
+
+  </body>
+  </html>
+
+
+
+
