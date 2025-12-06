@@ -8,73 +8,189 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // map.locate({setView: true, maxZoom: 16});
  
  
-let marker = L.marker([-30.0243475, -51.2082336]).addTo(map);
+// let marker = L.marker([-30.0243475, -51.2082336]).addTo(map);
  
-let circle = L.circle([-30.0243475, -51.2082336], {
-    color: 'blue',
-    fillColor: '#0d4ae5ff',
-    fillOpacity: 0.5,
-    radius: 500
-}).addTo(map);
-// =======================================
+// let circle = L.circle([-30.0243475, -51.2082336], {
+//     color: 'blue',
+//     fillColor: '#0d4ae5ff',
+//     fillOpacity: 0.5,
+//     radius: 500
+// }).addTo(map);
+
 // let polygon = L.polygon([
 //    [-30.0243475, -51.2082336],
 //    [-30.0243475, -51.2082336],
 //      [-30.0243475, -51.2082336]
 // ]).addTo(map);
 
-// ========================================
- 
-marker.bindPopup("<b>Sua localização!</b><br>Você está aqui!").openPopup();
-circle.bindPopup("Etá sem água nessa área.");
+// =======================================
 
- 
-// let popup = L.popup()
-//     .setLatLng([-30.0243475, -51.2082336])
-//     .setContent("I am a standalone popup.")
-//     .openOn(map);
- 
-function onMapClick(e) {
-    alert("You clicked the map at " + e.latlng);
-}
-map.on('click', onMapClick);
- 
-// let popup = L.popup();
- 
-function onMapClick(e) {
-    popup
-        .setLatLng(e.latlng)
-        .setContent("You clicked the map at " + e.latlng.toString())
-        .openOn(map);
-}
- 
-map.on('click', onMapClick);
+// let map = L.map('map').setView([-30.0243475, -51.2082336], 16);
 
-const statusBairros = {
-    "Aberta dos Morros": "Energia normal.",
-    "Agronomia": "Sem água no momento.",
-    "Auxiliadora": "Tudo normal.",
-    "Azenha": "Sem energia em algumas ruas.",
-    // adicione seus bairros aqui...
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+// =======================================
+// REMOVIDO: círculo azul fixo que aparecia sempre
+// REMOVIDO: polygon
+// =======================================
+
+let marker = L.marker([-30.0243475, -51.2082336]).addTo(map);
+
+// CAMADA QUE VAI GUARDAR OS CÍRCULOS DINAMICAMENTE
+const outageLayer = L.layerGroup().addTo(map);
+
+// FUNÇÃO PRINCIPAL: CRIA CÍRCULO DEPENDENDO DO STATUS
+function createOutageCircle(lat, lng, agua, luz) {
+    outageLayer.clearLayers(); // remove círculos anteriores
+
+    // Verde = água e luz faltando
+    if (agua && luz) {
+        L.circle([lat, lng], {
+            color: 'green',
+            fillColor: '#19e619ff',
+            fillOpacity: 0.4,
+            radius: 600
+        })
+        .bindPopup("Esta área está sem água e sem luz")
+        .addTo(outageLayer);
+        return;
+    }
+
+    // Azul = sem água
+    if (agua) {
+        L.circle([lat, lng], {
+            color: 'blue',
+            fillColor: '#1c1cdeff',
+            fillOpacity: 0.4,
+            radius: 600
+        })
+        .bindPopup("Esta área está sem água")
+        .addTo(outageLayer);
+        return;
+    }
+
+    // Amarelo = sem luz
+    if (luz) {
+        L.circle([lat, lng], {
+            color: 'orange',
+            fillColor: '#ffea00ff',
+            fillOpacity: 0.4,
+            radius: 600
+        })
+        .bindPopup("Esta área está sem luz")
+        .addTo(outageLayer);
+        return;
+    }
+
+    // Nenhum problema → nenhum círculo
+}
+
+// =======================================
+// STATUS DOS BAIRROS
+// TRUE = falta | FALSE = normal
+// Você pode editar isso à vontade:
+// =======================================
+
+const status = {
+  "Aberta dos Morros": { agua: false, luz: false },
+  "Agronomia": { agua: false, luz: false },
+  "Anchieta": { agua: false, luz: false },
+  "Arquepelogo": { agua: false, luz: false },
+  "Auxiliadora": { agua: false, luz: false },
+  "Azenha": { agua: false, luz: true },
+  "Bela Vista": { agua: false, luz: false },
+  "Belém Novo": { agua: true, luz: false },
+  "Belém Velho": { agua: false, luz: false },
+  "Boa Vista": { agua: false, luz: false },
+  "Bom Jesus": { agua: false, luz: false },
+  "Bom Fim": { agua: false, luz: false },
+  "Camaquã": { agua: false, luz: false },
+  "Campo Novo": { agua: false, luz: false },
+  "Cascata": { agua: false, luz: false },
+  "Cavalhada": { agua: true, luz: true },
+  "Centro": { agua: false, luz: false },
+  "Chácara das Pedras": { agua: false, luz: false },
+  "Cidade Baixa": { agua: false, luz: false },
+  "Cristal": { agua: true, luz: true },
+  "Farrapos": { agua: false, luz: false },
+  "Farroupilha": { agua: false, luz: false },
+  "Floresta": { agua: false, luz: false },
+  "Guarujá": { agua: false, luz: false },
+  "Higienópolis": { agua: false, luz: true },
+  "Hipica": { agua: false, luz: false },
+  "Humaitá": { agua: true, luz: true },
+  "Independência": { agua: false, luz: false },
+  "Ipanema": { agua: false, luz: false },
+  "Jardim Botânico": { agua: false, luz: false },
+  "Jardim Leopoldina": { agua: false, luz: false },
+  "Jardim Lindoia": { agua: false, luz: false },
+  "Lami": { agua: false, luz: false },
+  "Lomba do Pinheiro": { agua: false, luz: false },
+  "Medianeira": { agua: false, luz: false },
+  "Menino Deus": { agua: false, luz: false },
+  "Moinhos de Vento": { agua: false, luz: false },
+  "Parque Santa Fé": { agua: false, luz: false },
+  "Partenon": { agua: false, luz: false },
+  "Passo D Areia": { agua: false, luz: false },
+  "Petropolis": { agua: false, luz: false },
+  "Ponto Grossa": { agua: false, luz: false },
+  "Praia de Belas": { agua: false, luz: false },
+  "Restinga": { agua: false, luz: false },
+  "Rio Branco": { agua: false, luz: false },
+  "Rubem Berta": { agua: false, luz: false },
+  "Santa Tereza": { agua: true, luz: true },
+  "Santana": { agua: false, luz: false },
+  "São Caetano": { agua: false, luz: false },
+  "Sarandi": { agua: false, luz: false },
+  "Serraria": { agua: false, luz: false },
+  "Sétimo Céu": { agua: false, luz: true },
+  "Teresópolis": { agua: false, luz: false },
+  "Três Figueiras": { agua: false, luz: false },
+  "Tristeza": { agua: false, luz: false },
+  "Vila Assunção": { agua: false, luz: false },
+  "Vila Ipiranga": { agua: true, luz: true },
+  "Vila Jardim": { agua: false, luz: false },
+  "Vila Nova": { agua: true, luz: false }
 };
+
+
+// =======================================
+// EVENTO DE POPUP NO MARCADOR INICIAL
+// =======================================
+
+marker.bindPopup("<b>Sua localização!</b><br>Você está aqui!");
+
+// =======================================
+// RESTO DO SEU CÓDIGO — INALTERADO
+// =======================================
+
+function onMapClick(e) {
+    alert("Você clicou no mapa: " + e.latlng);
+}
+map.on('click', onMapClick);
+
+// =======================================
+// SISTEMA DE BUSCA
+// =======================================
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Elementos do HTML
   const input = document.getElementById("search-input");
   const suggestions = document.getElementById("suggestions");
   const searchButton = document.getElementById("search-button");
 
   searchButton.type = "button";
 
-  // Array completo de bairros com coordenadas
   const bairros = [
     { nome: "Aberta dos Morros", lat:  -30.161011186607134, lng: -51.19898661579821 },
     { nome: "Agronomia", lat: -30.071711578499716, lng: -51.139988852665525 },
     { nome: "Anchieta", lat: -29.99575931067296, lng: -51.1675155361778 },
     { nome: "Arquepelogo", lat: -29.97133484154548, lng:  -51.268227039028154 },
     { nome: "Auxiliadora", lat: -30.020988226023476,  lng:  -51.191382080257156 },
-    { nome: "Azenha", lat: -30.04895200116273, lng: -51.215828191099355},
+    { nome: "Azenha",  },
     { nome: "Bela Vista", lat: -30.03314409702267, lng: -51.190925113854306},
     { nome: "Belém Novo", lat: -30.208124544073165, lng:  -51.17965664963283},
     { nome: "Belém Velho", lat: -30.115173792222414, lng: -51.174011758131066 },
@@ -100,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { nome: "Ipanema", lat: -30.134951551207738, lng: -51.22331294976427 },
     { nome: "Jardim Botânico", lat: -30.051848044293845, lng: -51.18255263119411 },
     { nome: "Jardim Leopoldina", lat: -30.019941853462853,  lng: -51.11500099950342 },
-     { nome: "Jardim Leopoldina", lat: -30.019941853462853,  lng: -51.11500099950342 },
+    { nome: "Jardim Leopoldina", lat: -30.019941853462853,  lng: -51.11500099950342 },
     { nome: "Jardim Lindoia", lat: -30.007591120222326,  lng: -51.15167876616331 },
     { nome: "Lami", lat: -30.23062200191629, lng: -51.088071431022236},
     { nome: "Lomba do Pinheiro", lat: -30.11666873264922, lng: -51.12576154936868},
@@ -131,10 +247,8 @@ document.addEventListener("DOMContentLoaded", () => {
     { nome: "Vila Nova", lat: -30.113309167096524, lng: -51.20261831429308 },
   ];
 
-  
   const nomesBairros = bairros.map(b => b.nome);
 
-  
   function showSuggestions() {
     const value = input.value.trim().toLowerCase();
 
@@ -157,7 +271,6 @@ document.addEventListener("DOMContentLoaded", () => {
     suggestions.innerHTML = filtered.map(item => `<li>${item}</li>`).join("");
     suggestions.style.display = "block";
 
-   
     suggestions.querySelectorAll("li").forEach(li => {
       li.addEventListener("click", () => {
         input.value = li.textContent;
@@ -166,10 +279,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
- 
   input.addEventListener("input", showSuggestions);
 
-  
+  // ===============================
+  // PROCESSAMENTO AO PESQUISAR BAIRRO
+  // ===============================
+
   searchButton.addEventListener("click", () => {
     const bairroDigitado = input.value.trim();
     const bairro = bairros.find(b => b.nome.toLowerCase() === bairroDigitado.toLowerCase());
@@ -177,20 +292,22 @@ document.addEventListener("DOMContentLoaded", () => {
     if (bairro) {
       const coords = [bairro.lat, bairro.lng];
 
-      circle.setLatLng(coords);
       marker.setLatLng(coords);
       map.setView(coords, 16);
 
       marker.bindPopup(`Bairro: ${bairro.nome}`).openPopup();
+
+      // AQUI A MÁGICA DOS CÍRCULOS:
+      const st = status[bairro.nome] || { agua: false, luz: false };
+      createOutageCircle(bairro.lat, bairro.lng, st.agua, st.luz);
+
     } else {
       alert("Bairro não encontrado!");
     }
   });
 
-  
   searchButton.addEventListener("mousedown", (e) => e.preventDefault());
 
- 
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -198,13 +315,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
- 
   document.addEventListener("click", (e) => {
-    if (
-      e.target !== input &&
+    if (e.target !== input &&
       !suggestions.contains(e.target) &&
-      e.target !== searchButton
-    ) {
+      e.target !== searchButton) {
       suggestions.style.display = "none";
     }
   });

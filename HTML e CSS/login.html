@@ -12,7 +12,7 @@
 
 <header>
   <div class="titulo">
-    <img src="/Imagens/logo_já_voltou-removebg-preview.png" class="logo">
+    <img src="image/logo_já_voltou-removebg-preview.png" class="logo">
     <h1>Já Voltou?</h1>
   </div>
 
@@ -21,7 +21,6 @@
         <ul>
           <li><a href="login.html"><i class="fas fa-user"></i> Login</a></li>
           <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-          <li><a href="pesquisar.html"><i class="fas fa-search"></i> Pesquisar</a></li>
           <li><a href="Segurança.html"><i class="fas fa-shield-alt"></i> Dicas de segurança</a></li>
           <li><a href="ajuda.html"><i class="fas fa-question-circle"></i> Ajuda</a></li>
         </ul>
@@ -52,7 +51,7 @@
     }
 
     if (username === 'admin' && password === '1234') {
-    window.location.href = 'home.html';
+    window.location.href = 'index.html';
     }
     
     else {
@@ -60,6 +59,27 @@
       }
     });
   </script>
+
+
+<script>
+  document.getElementById('btnEntrar').addEventListener('click', function() {
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const messageEl = document.getElementById('message');
+    messageEl.textContent = '';
+    messageEl.style.color = 'red';
+
+    // Verifica se os campos estão vazios
+    if (!username || !password) {
+      messageEl.textContent = 'Por favor, preencha usuário e senha.';
+      return;
+    }
+
+    // Redireciona para a página home do trabalho
+    window.location.href = 'index.html';
+  });
+</script>
+
 
   </body>
   </html>
